@@ -2,6 +2,7 @@ import express from "express";
 import * as dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoute from "./routes/user.route"
+import taskRoute from "./routes/task.route"
 dotenv.config();
 
 const app = express();
@@ -11,6 +12,7 @@ app.get("/",(_req,res)=>{
     res.send("server is running...")
 })
 app.use("/user",userRoute);
+app.use("/task",taskRoute);
 const port = process.env.PORT;
 app.listen(port,()=>{
     console.log(`server is running on http:// localhost:${port}`);
