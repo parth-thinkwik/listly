@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 import{v4 as uuidv4} from "uuid";
 
-interface UserDocument{
+export interface UserDocument{
     id:string;
     email:string;
     password:string;
@@ -28,4 +28,4 @@ const userSchema = new Schema<UserDocument>({
 }
 )
 
-export const user = model<UserDocument>("User",userSchema);
+export const User = model<UserDocument>("User",userSchema);
