@@ -6,7 +6,7 @@ import { Permissions } from "../constants/enums";
 export interface RoleDocument extends Document{
     id:string;
     name:string;
-    permissions:Permissions[]
+    permissions:string[]
 }
 
 const roleSchema = new Schema({
@@ -17,6 +17,7 @@ const roleSchema = new Schema({
     },
     name:{
         type:String,
+        unique:true,
         default:"",
         required:true
     },

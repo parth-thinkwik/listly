@@ -8,5 +8,6 @@ const router = Router();
 
 router.post("/signup",validateRequest(userSchema),signup);
 router.get("/login",validateRequest(userSchema),login);
+// router.get("/userList")
 
 export default router;  

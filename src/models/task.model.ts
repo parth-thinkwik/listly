@@ -1,16 +1,6 @@
 import { model, Schema } from "mongoose";
 import {v4 as uuidv4} from "uuid";
-
-
-export interface TaskDocument extends Document{
-    id:string;
-    title:string;
-    description:string;
-    dueDate:Date;
-    completed:boolean;
-    isDeleted:boolean;
-    uuser:Schema.Types.ObjectId;
-}
+import { TaskDocument } from "../types/task.types";
 
 const taskSchema = new Schema({
     id:{

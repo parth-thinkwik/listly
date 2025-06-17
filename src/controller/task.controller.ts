@@ -1,14 +1,11 @@
 import { Request, Response } from "express";
 import moment from "moment";
 import { Task } from "../models/task.model";
+import { createTaskDocument, getTaskByIdDocument, getTaskDocument, updateTaskDocument } from "../types/task.types";
 
 export const createTask = async(req:Request,res:Response)=>{
   try{
-      const {title,description,dueDate} = req.validatedData as {
-        title:string;
-        description:string;
-        dueDate:string;
-    }
+      const {title,description,dueDate} = req.validatedData as createTaskDocument;
     const user = req.user;
     const dueDateMoment = moment(dueDate).startOf("day"); 
     const now = moment().startOf("day");
@@ -29,7 +26,7 @@ export const getTask = async(req:Request,res:Response)=>{
     try{
         const user = req.user;
         
-        const {page = 1} = req.validatedData as {page?:number};
+        const {page = 1} = req.validatedData as getTaskDocument;
         const limit = 5;
         const skip = (page - 1) * limit;
 
@@ -48,7 +45,7 @@ export const getTask = async(req:Request,res:Response)=>{
 export const getTaskById = async(req:Request,res:Response)=>{
   try{
     const user = req.user;
-    const {taskId} = req.validatedData as {taskId:string};
+    const {taskId} = req.validatedData as getTaskByIdDocument
 
     const item = await Task.find({id:taskId,user:user?.id,isDeleted:false});
     if(item.length == 0){
@@ -66,12 +63,7 @@ export const getTaskById = async(req:Request,res:Response)=>{
 
 export const updateTask = async (req: Request, res: Response) => {
   try {
-    const { taskId, title, description, dueDate } = req.validatedData as {
-      title?: string;
-      description?: string;
-      dueDate?: string;
-      taskId: string;
-    };
+    const { taskId, title, description, dueDate } = req.validatedData as updateTaskDocument;
 
     const user = req.user;
     const task = await Task.findOne({ id: taskId, user: user?.id, isDeleted: false });
@@ -116,8 +108,10 @@ export const updateTask = async (req: Request, res: Response) => {
 export const deleteTask = async(req:Request,res:Response)=>{
   try{
     const user = req.user;
-    const{taskId} = req.validatedData as{taskId:string};
+    const{taskId} = req.validatedData as getTaskByIdDocument;
+
     const task = await Task.findOne({id:taskId,user:user?.id});
+    
     if(!task){
       return res.status(400).json({message:"task nott found..."});
     }

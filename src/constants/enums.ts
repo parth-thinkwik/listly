@@ -1,8 +1,9 @@
 
 
 export enum Permissions {
-    READ = "read:task",
-    CREATE = "create:task",
-    UPDATE = "update:task",
-    DELETE = "delete:Task"
+    LISTNG = "listing:task",
+    ADDTASK = "adding:task",
+    EDITASK = "edit:task",
+    REMOVETASK = "removing:task",
+    TASKDETAILS = "details:task"
 }

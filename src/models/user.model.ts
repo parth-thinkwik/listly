@@ -1,11 +1,6 @@
-import { model, Schema } from "mongoose";
+import { model, Schema, Types } from "mongoose";
 import{v4 as uuidv4} from "uuid";
-
-export interface UserDocument{
-    id:string;
-    email:string;
-    password:string;
-}
+import { UserDocument } from "../types/user.types";
 
 const userSchema = new Schema<UserDocument>({
     id:{
@@ -22,7 +17,13 @@ const userSchema = new Schema<UserDocument>({
         type:String,
         required:true,
         default:""
-    }
+    },
+    roleIds:[
+        {
+            type:String,
+            ref:"Role"
+        }
+    ]  
 },{
     timestamps:true
 }
