@@ -20,7 +20,7 @@ export const signup = async(req:Request,res:Response)=>{
         const token = jwt.sign({id:user.id,email:email},process.env.SECRET as string,{expiresIn:"24h"});
         return res.status(200).json({ message: "User created successfully.", token, user });
 
-    }catch(err){
+    }catch(err){    
         console.error(err);
         return res.status(400).json({message:"Internal server Error.."})
     }

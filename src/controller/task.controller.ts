@@ -10,7 +10,7 @@ export const createTask = async(req:Request,res:Response)=>{
         dueDate:string;
     }
     const user = req.user;
-    const dueDateMoment = moment(dueDate).startOf("day");
+    const dueDateMoment = moment(dueDate).startOf("day"); 
     const now = moment().startOf("day");
 
     if(dueDateMoment.isBefore(now)){
