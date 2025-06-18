@@ -4,8 +4,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Role } from "../models/roles.model";
 import { signupAndloginDocument } from "../types/user.types";
-import { Task } from "../models/task.model";
-
 
 export const signup = async(req:Request,res:Response)=>{
     try{
@@ -33,7 +31,6 @@ export const signup = async(req:Request,res:Response)=>{
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.validatedData as signupAndloginDocument;
-
     const user = await User.findOne({ email });
     
     if (!user) {

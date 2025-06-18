@@ -30,7 +30,7 @@ import { RoleDocument } from "../models/roles.model";
 // }
 // }
 
-export const authMiddleware = (requiredPermissions?:Permissions)=>{
+export const authMiddleware = (requiredPermissions:Permissions)=>{
     return async(req:Request,res:Response,next:NextFunction)=>{
         try{
             const token = req.headers["x-access-token"] as string;
@@ -54,17 +54,12 @@ export const authMiddleware = (requiredPermissions?:Permissions)=>{
             if(!user){
                 return res.status(400).json({message:"user is not exist..."})
             }
-
-              if (!requiredPermissions || requiredPermissions.length === 0) {
-                req.user = user;
-                return next();
-                }
-            const roles = user.roleIds as RoleDocument[];
-            console.log(roles);
+            const roles = user.roleIds as unknown as RoleDocument[];
             
             if(!user.roleIds || !Array.isArray(user.roleIds)){
                 return res.status(400).json({message:"user has no role assigned..."})
             }
+            console.log(roles);
             
          const hasPermission = roles.some(role =>
            role.permissions.some(perm => requiredPermissions.includes(perm))

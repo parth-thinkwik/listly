@@ -8,7 +8,7 @@ export const adminSeeder = async()=>{
         console.log('Seeding initial data...');
         let role = await Role.findOne({name:"Admin"});
         if(!role){
-             role = await Role.create({name:'Admin',permissions:[ "listing:task", "adding:task", "edit:task", "removing:task", "details:task" ]})
+             role = await Role.create({name:'Admin',permissions:[ "listing:task", "adding:task", "edit:task", "removing:task", "details:task","list:users","list:userbyid","create:role","assign:role","edit:role","list:role" ]})
         }
         const userData = {
             name:"Admin",
