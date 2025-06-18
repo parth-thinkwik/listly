@@ -13,6 +13,7 @@ export const createTask = async(req:Request,res:Response)=>{
     if(dueDateMoment.isBefore(now)){
         return res.status(400).json({message:"please don't enter past due date.."})
     }
+    
     const taskItem = {title,description,dueDate:dueDateMoment,user: user ?.id};
     const createdItem = await Task.create(taskItem);
     return res.status(200).json({message:"Task created successfully..",createdItem});
@@ -119,7 +120,7 @@ export const deleteTask = async(req:Request,res:Response)=>{
     await task.save();
     return res.status(200).json({message:"task deleted suuccessfully...",task})
   }catch(err){
-    console.error(err);
+    console.error(err); 
     return res.status(500).json({message:"Internal server Error..."})
   }
 }

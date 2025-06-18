@@ -33,6 +33,10 @@ const taskSchema = new Schema({
         type:String,
         ref:"User",
         required:true
+    },
+    attachment:{
+        type:String,
+        required: false
     }
 })
 

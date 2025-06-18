@@ -15,7 +15,6 @@ export const createTaskSchema = Joi.object({
         "date.base": "Due date must be a valid date",
         "any.required":"due-date muust be required"
     })
-    
 })
 
 export const updateTaskSchema = Joi.object({

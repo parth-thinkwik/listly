@@ -1,6 +1,5 @@
 import { Schema } from "mongoose";
 
-
 export interface TaskDocument extends Document{
     id:string;
     title:string;

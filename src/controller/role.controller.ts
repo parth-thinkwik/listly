@@ -3,7 +3,6 @@ import { Role, RoleDocument } from "../models/roles.model";
 import { assignRoleSchema, createRoleSchema, editRoleSchema } from "../types/role.types";
 import { User } from "../models/user.model";
 
-
 export const createRole = async(req:Request,res:Response)=>{
     try{
         const {name,permissions} = req.validatedData as createRoleSchema;
