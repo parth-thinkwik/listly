@@ -6,7 +6,7 @@ export interface UserDocument{
     roleIds:string[];
 }
 
-export type signupAndloginDocument = {
+export interface signupAndloginDocument  {
     email:string;
     password:string;
 }

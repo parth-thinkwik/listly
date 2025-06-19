@@ -1,14 +1,14 @@
-export type createRoleSchema = {
+export interface createRoleSchema {
     name:string;
     permissions:string[];
 }
 
-export type assignRoleSchema = {
+export interface assignRoleSchema {
     userId:string;
     roleIds:string[];
 }
 
-export type editRoleSchema = {
+export interface editRoleSchema {
     roleId:string;
     name:string;
     permissions:string[];

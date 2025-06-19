@@ -10,21 +10,21 @@ export interface TaskDocument extends Document{
     user:Schema.Types.ObjectId;
 }
 
-export type createTaskDocument = {
+export interface createTaskDocument {
         title:string;
         description:string;
         dueDate:string;
 }
 
-export type getTaskDocument = {
+export interface getTaskDocument {
     page?:number;
 }
 
-export type getTaskByIdDocument= {
+export interface getTaskByIdDocument {
     taskId:string;
 }
 
-export type updateTaskDocument = {
+export interface updateTaskDocument {
       title?: string;
       description?: string;
       dueDate?: string;

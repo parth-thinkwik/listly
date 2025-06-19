@@ -1,5 +1,5 @@
 
 
-export type findUserwithTaskDetailsSchema = {
+export interface findUserwithTaskDetailsSchema {
     userId:string;
 }
